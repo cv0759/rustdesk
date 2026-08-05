@@ -17,7 +17,7 @@ jobs:
         run: |
           cd libs/hbb_common
           git fetch --all
-          git checkouorigin/custom-1.4.9.9
+         git checkout origin/custom-1.4.9
           cd ../..
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
