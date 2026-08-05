@@ -21,7 +21,7 @@ jobs:
           
                    # 添加官方远程仓库并 fetch 所有 tag
           git remote add upstream https://github.com/rustdesk/rustdesk.git
-          git fetch upstream --tags
+          git fetch upstream tag v1.4.9
           
           # 基于官方 1.4.9 tag 创建新分支
           git checkout -b custom-1.4.9 upstream/v1.4.9
