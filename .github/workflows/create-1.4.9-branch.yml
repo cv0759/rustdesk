@@ -19,8 +19,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # 基于 1.4.9 tag 创建新分支
-          git checkout -b custom-1.4.9 v1.4.9
+                   # 添加官方远程仓库并 fetch 所有 tag
+          git remote add upstream https://github.com/rustdesk/rustdesk.git
+          git fetch upstream --tags
+          
+          # 基于官方 1.4.9 tag 创建新分支
+          git checkout -b custom-1.4.9 upstream/v1.4.9
           
           # 修改 .gitmodules，使用我们自己的 hbb_common 仓库的 custom-1.4.9 分支
           git config -f .gitmodules submodule.libs/hbb_common.url https://github.com/cv0759/hbb_common
