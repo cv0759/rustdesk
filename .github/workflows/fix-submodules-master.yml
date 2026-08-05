@@ -1,4 +1,4 @@
-name: Fix and update submodules (master)
+name: Fix and update submodules (master)name: Fix and update submodules (master)
 
 on:
   workflow_dispatch:
@@ -23,7 +23,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add libs/hbb_common
-          git commit -m "Update hbb_common to custom-master branch"
+          git commit -m "Update hbb_common to 
+          
+custom-master branch"
           git push
           
 name: Fix and update submodules (master)
