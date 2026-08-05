@@ -1,3 +1,5 @@
 [submodule "libs/hbb_common"]
 	path = libs/hbb_common
-	url = https://github.com/cv0759/hbb_common
+	url = https://github.com/cv0759/hbb_commo
+
+branch = custom-1.4.9n
