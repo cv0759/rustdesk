@@ -1,0 +1,36 @@
+name: Create 1.4.9 custom branch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create custom 1.4.9 branch
+        run: |
+          # 配置 git 用户信息
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # 基于 1.4.9 tag 创建新分支
+          git checkout -b custom-1.4.9 v1.4.9
+          
+          # 修改 .gitmodules，使用我们自己的 hbb_common 仓库的 custom-1.4.9 分支
+          git config -f .gitmodules submodule.libs/hbb_common.url https://github.com/cv0759/hbb_common
+          git config -f .gitmodules submodule.libs/hbb_common.branch custom-1.4.9
+          
+          # 提交修改
+          git add .gitmodules
+          git commit -m "Use custom hbb_common for 1.4.9"
+          
+          # 推送新分支
+          git push origin custom-1.4.9
+
+
