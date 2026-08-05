@@ -1,0 +1,24 @@
+name: Fix and update submodules v2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix-submodules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fix .gitmodules and update submodules
+        run: |
+          git config -f .gitmodules submodule.libs/hbb_common.url https://github.com/cv0759/hbb_common
+          git config -f .gitmodules submodule.libs/hbb_common.branch custom-1.4.9
+          git submodule update --remote
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Fix .gitmodules and update submodules (v2)"
+          git push
